@@ -32,6 +32,7 @@ document.querySelector(".nxt-step").onclick = () => {
     text_1 = document.querySelector(".custom-input").value;
 
     $.ajax({
+        type: 'POST',
         url: "http://localhost:55555/predict",
         data: {text: $.trim(text_1)},
         success: function(result){
