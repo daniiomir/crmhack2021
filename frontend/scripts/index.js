@@ -33,7 +33,7 @@ document.querySelector(".nxt-step").onclick = () => {
 
     $.ajax({
         url: "http://localhost:55555/predict",
-        data: {text: text_1},
+        data: {text: $.trim(text_1)},
         success: function(result){
             alert(result);
         }
