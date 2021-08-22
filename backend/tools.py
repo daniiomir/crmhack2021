@@ -1,3 +1,5 @@
+import re
+from data.samples import sample1
 from natasha import (
     Segmenter,
     MorphVocab,
@@ -6,6 +8,7 @@ from natasha import (
     NewsNERTagger,
     Doc
 )
+
 
 def get_ner_models():
     segmenter = Segmenter()
@@ -29,16 +32,33 @@ def get_entities(text, segmenter, morph_tagger, ner_tagger, morph_vocab):
     doc.tag_ner(ner_tagger)
     for span in doc.spans:
         span.normalize(morph_vocab)
-    result = [doc.spans[i].normal.lower() for i in range(len(doc.spans))]
-    if len(result) == 0:
-        return None
-    return tuple(result)
+    person = [doc.spans[i].normal for i in range(len(doc.spans)) if doc.spans[i].type == 'PER']
+    location = [doc.spans[i].normal for i in range(len(doc.spans)) if doc.spans[i].type == 'LOC']
+    org = [doc.spans[i].normal for i in range(len(doc.spans)) if doc.spans[i].type == 'ORG']
+    if len(person) == 0:
+        person = None
+    if len(location) == 0:
+        location = None
+    if len(org) == 0:
+        org = None
+    return person, location, org
 
 
-def get_pred(json_file):
-    # inn, data = convert_json_to_dataset(json_file)
-    # return {inn: model.predict(data)[0]}
+def get_pred(text):
+    models = get_ner_models()
+    phone = re.findall(r'((\+7|7|8)+([0-9]){10})', text)[0][0]
+    if len(phone) == 0:
+        phone = None
+    email = re.findall(r'[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}', text)[0]
+    if len(email) == 0:
+        email = None
+    person, location, org = get_entities(text, **models)
+    return {'email': email, 'phone': phone, 'location': location, 'person': person, 'org': org}
+
+
+def matching(pred):
+    ...
 
 
 if __name__ == '__main__':
-    pass
+    print(get_pred(sample1))
