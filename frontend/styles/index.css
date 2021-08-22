@@ -210,6 +210,7 @@ a {
 
 .block-steps {
     padding: 0 0 1.5vw 0;
+    border-bottom: 2px solid #DBDBDB;
 }
 
 .similar-result,
@@ -230,6 +231,7 @@ a {
 
 .similar-result {
     padding-top: 4vw;   
+    padding-bottom: 4vw;
 }
 
 .similar-result > h2 {
@@ -237,4 +239,8 @@ a {
     font-weight: 700;
     font-size: 1.8vw;
     padding-bottom: 1vw;
+}
+
+.blok-btn {
+    border-top: 2px solid #DBDBDB;
 }

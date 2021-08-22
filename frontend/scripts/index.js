@@ -1,4 +1,9 @@
 document.querySelector(".nxt-step").onclick = () => {
+
+    if (document.querySelector(".nxt-step").innerHTML == "Try Again") {
+        location.reload();
+    }
+
     document.querySelector(".custom-input").disabled = true;
     document.querySelector(".block-input > div:nth-child(2) > p").style.opacity = "0";
 
