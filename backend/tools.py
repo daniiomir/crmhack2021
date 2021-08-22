@@ -47,12 +47,16 @@ def get_entities(text, segmenter, morph_tagger, ner_tagger, morph_vocab):
 
 def get_pred(text):
     models = get_ner_models()
-    phone = re.findall(r'((\+7|7|8)+([0-9]){10})', text)[0][0]
+    phone = re.findall(r'((\+7|7|8)+([0-9]){10})', text)
     if len(phone) == 0:
         phone = None
-    email = re.findall(r'[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}', text)[0]
+    else:
+        phone = phone[0][0]
+    email = re.findall(r'[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}', text)
     if len(email) == 0:
         email = None
+    else:
+        email = email[0]
     person, location, org = get_entities(text, **models)
     return {'email': email, 'phone': phone, 'location': location, 'person': person, 'org': org}
 
