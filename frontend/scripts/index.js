@@ -28,4 +28,14 @@ document.querySelector(".nxt-step").onclick = () => {
     document.querySelector(".result").style.opacity = "1";
 
     // document.querySelector(".block-input").innerHTML = document.querySelector(".block-input").innerHTML + ""
+
+    text_1 = document.querySelector(".custom-input").value;
+
+    $.ajax({
+        url: "http://localhost:55555/predict",
+        data: {text: text_1},
+        success: function(result){
+            alert(result);
+        }
+    });
 }
