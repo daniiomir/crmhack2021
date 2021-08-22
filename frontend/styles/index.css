@@ -55,6 +55,7 @@ a {
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
     width: 70%;
+    padding: 1.5vw 5vw !important;
 }
 
 .img-block {
@@ -89,6 +90,10 @@ a {
 
 .all-rights-reserved > span {
     color: #193660;
+}
+
+.block-logo {
+    padding-bottom: 1.5vw;
 }
 
 .block-logo > h3 {
@@ -133,4 +138,69 @@ a {
 
 .step-2 {
     margin-left: 2vw;
+}
+
+.custom-form-ch-1 hr {
+    color: #DBDBDB;
+    height: 2px;
+    margin: 0;
+}
+
+.block-title > span {
+    color: #B1B1B1;
+    font-weight: 600;
+    padding: 1.5vw 0 1vw 0;
+}
+
+.block-title > h2 {
+    color: #193660;
+    font-weight: 700;
+    font-size: 1.8vw;
+}
+
+.input-title {
+    color: #193660;
+    font-weight: 600;
+}
+
+.custom-input {
+    border-radius: 10px;
+    border: 2px solid gray;
+    height: 6vw;
+    margin-top: 0.6vw;
+    padding: 0.5vw;
+    color: #193660;
+}
+
+.custom-input:focus {
+    border: 1px solid #0b75ff;
+}
+
+.block-input {
+    padding: 1vw 0 3vw 0;
+}
+
+.block-input > div:nth-child(2) > p {
+    width: 40%;
+    color: #193660;
+}
+
+.nxt-step {
+    border: 0;
+    background-color: #0b75ff;
+    color: white;
+    padding: 0.7vw 2.6vw;
+    border-radius: 7px;
+    font-size: 1vw;
+    font-weight: 600;
+    margin-top: 2vw;
+    transition: opacity 0.2 ease;
+}
+
+.nxt-step:hover {
+    opacity: 0.8;
+} 
+
+.block-steps {
+    padding: 0 0 1.5vw 0;
 }
